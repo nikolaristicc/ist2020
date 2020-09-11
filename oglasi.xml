@@ -1,1 +1,93 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<!DOCTYPE Ogasi SYSTEM "oglasi.dtd">
+<Oglasi xmlns="http://www.w3schools.com"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.w3schools.com oglasi.xsd">
+
+  <!--prvi oglas-->
+  <Automobil>
+    <datumIsteka>
+      <dan>2</dan>
+      <mesec>7</mesec>
+      <godina>2021</godina>
+    </datumIsteka>
+    <cena valuta="eur">2000</cena>
+    <tekstOglasa>Alfa Romeo 147, 1.6ts 105KS. Odrzavan redovno, veliki servis uradjen pre 2000km.</tekstOglasa>
+    <tag>
+      <tag1>Alfa Romeo</tag1>
+      <tag2>kupe</tag2>
+      <tag3>Vranje</tag3>
+    </tag>
+    <e-mail tip="privatni">ristic.017@gmail.com</e-mail>
+  </Automobil>
+
+  <!--drugi oglas-->
+  <Alati>
+    <datumIsteka>
+      <dan>6</dan>
+      <mesec>12</mesec>
+      <godina>2021</godina>
+    </datumIsteka>
+    <cena valuta="din">22000</cena>
+    <tekstOglasa>Bosch udarna busilica 1500 watt, koriscena iskljucivo za kucnu upotrebu.</tekstOglasa>
+    <tag>
+      <tag1>bosch</tag1>
+      <tag2>busilica</tag2>
+      <tag3>Beograd</tag3>
+      <tag4>amerikan</tag4>
+    </tag>
+    <e-mail tip="sluzbeni">mirko@hotmail.com</e-mail>
+  </Alati>
+
+  <!--treci oglas-->
+  <Alati>
+    <datumIsteka>
+      <dan>12</dan>
+      <mesec>8</mesec>
+      <godina>2022</godina>
+    </datumIsteka>
+    <cena valuta="din">28000</cena>
+    <tekstOglasa>Bosch brusilica 12000 o/min, profesionalna i izuzetno snazna.</tekstOglasa>
+    <tag>
+      <tag1>bosch</tag1>
+      <tag2>brusilica</tag2>
+      <tag3>Zajecar</tag3>
+    </tag>
+    <e-mail tip="sluzbeni">vlada@hotmail.com</e-mail>
+  </Alati>
+
+  <!--cetvrti oglas-->
+  <Poducavanje>
+    <datumIsteka>
+      <dan>22</dan>
+      <mesec>11</mesec>
+      <godina>2020</godina>
+    </datumIsteka>
+    <cena valuta="din">1500</cena>
+    <tekstOglasa>Diplomirani filolog poducava engleski jezik kandidate do kategorije B2. Online ili uzivo u Vranju.</tekstOglasa>
+    <tag>
+      <tag1>engleski</tag1>
+      <tag2>jezik</tag2>
+      <tag3>skype</tag3>
+    </tag>
+    <e-mail tip="sluzbeni">jelena@hotmail.com</e-mail>
+  </Poducavanje>
+
+  <!--peti oglas-->
+  <Automobil>
+    <datumIsteka>
+      <dan>20</dan>
+      <mesec>11</mesec>
+      <godina>2021</godina>
+    </datumIsteka>
+    <cena valuta="eur">1500</cena>
+    <tekstOglasa>BMW 320, 2005. godiste, plave boje, vise informacija na broj telefona.</tekstOglasa>
+    <tag>
+      <tag1>BMW</tag1>
+      <tag2>320</tag2>
+      <tag3>Prokuplje</tag3>
+      <tag4>dizel</tag4>
+    </tag>
+    <e-mail tip="privatni">dragan@gmail.com</e-mail>
+  </Automobil>
+</Oglasi>
