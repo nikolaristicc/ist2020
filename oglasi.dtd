@@ -1,4 +1,4 @@
-﻿<!ELEMENT Oglasi (oglas+)>
+﻿<!ELEMENT Oglasi (oglas)+>
 
 <!ELEMENT oglas (datumIsteka, cena, tekstOglasa, tag, (e-mail)+)>
 <!ATTLIST oglas kategorija (Automobil|Alati|Poducavanje|Stanovi) #REQUIRED>
