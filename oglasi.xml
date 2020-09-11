@@ -3,7 +3,7 @@
 <Oglasi>
 
   <!--prvi oglas-->
-  <oglas kategorija="Automobil">
+  <oglas kategorija="Automobil" id="a1">
     <datumIsteka>
       <dan>2</dan>
       <mesec>7</mesec>
@@ -20,7 +20,7 @@
   </oglas>
 
   <!--drugi oglas-->
-  <oglas kategorija="Alati">
+  <oglas kategorija="Alati" id="a2">
     <datumIsteka>
       <dan>6</dan>
       <mesec>12</mesec>
@@ -38,7 +38,7 @@
   </oglas>
 
   <!--treci oglas-->
-  <oglas kategorija="Alati">
+  <oglas kategorija="Alati" id="a3">
     <datumIsteka>
       <dan>12</dan>
       <mesec>8</mesec>
@@ -55,7 +55,7 @@
   </oglas>
 
   <!--cetvrti oglas-->
-  <oglas kategorija="Poducavanje">
+  <oglas kategorija="Poducavanje" id="a4">
     <datumIsteka>
       <dan>22</dan>
       <mesec>11</mesec>
@@ -72,7 +72,7 @@
   </oglas>
 
   <!--peti oglas-->
-  <oglas kategorija="Automobil">
+  <oglas kategorija="Automobil" id="a5">
     <datumIsteka>
       <dan>20</dan>
       <mesec>11</mesec>

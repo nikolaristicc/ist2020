@@ -2,6 +2,7 @@
 
 <!ELEMENT oglas (datumIsteka, cena, tekstOglasa, tag, (e-mail)+)>
 <!ATTLIST oglas kategorija (Automobil|Alati|Poducavanje|Stanovi) #REQUIRED>
+<!ATTLIST oglas id ID #REQUIRED>
 
 <!ELEMENT datumIsteka (dan, mesec, godina)>
 <!ELEMENT dan (#PCDATA)>
