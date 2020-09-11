@@ -45,7 +45,7 @@
   <xs:element name="e-mail">
     <xs:complexType>
       <xs:simpleContent>
-        <xs:extension base="emailRestrikcija">
+        <xs:extension base="emailRest">
           <xs:attribute name="tip" use="required">
             <xs:simpleType>
               <xs:restriction base="xs:NMTOKEN">
@@ -58,9 +58,9 @@
       </xs:simpleContent>
     </xs:complexType>
   </xs:element>
-  <xs:simpleType name="emailRestrikcija">
+  <xs:simpleType name="emailRest">
     <xs:restriction base="xs:string">
-      <xs:pattern value="\c{5,20}@\c{4,8}.com"/>
+      <xs:pattern value="\c{4,25}@\c{4,13}.com"/>
     </xs:restriction>
   </xs:simpleType>
 </xs:schema>
