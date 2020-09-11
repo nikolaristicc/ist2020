@@ -3,7 +3,7 @@
 <Oglasi>
 
   <!--prvi oglas-->
-  <Automobil>
+  <oglas kategorija="Automobil">
     <datumIsteka>
       <dan>2</dan>
       <mesec>7</mesec>
@@ -17,10 +17,10 @@
       <tag3>Vranje</tag3>
     </tag>
     <e-mail tip="privatni">ristic.017@gmail.com</e-mail>
-  </Automobil>
+  </oglas>
 
   <!--drugi oglas-->
-  <Alati>
+  <oglas kategorija="Alati">
     <datumIsteka>
       <dan>6</dan>
       <mesec>12</mesec>
@@ -35,10 +35,10 @@
       <tag4>amerikan</tag4>
     </tag>
     <e-mail tip="sluzbeni">mirko@hotmail.com</e-mail>
-  </Alati>
+  </oglas>
 
   <!--treci oglas-->
-  <Alati>
+  <oglas kategorija="Alati">
     <datumIsteka>
       <dan>12</dan>
       <mesec>8</mesec>
@@ -52,10 +52,10 @@
       <tag3>Zajecar</tag3>
     </tag>
     <e-mail tip="sluzbeni">vlada@hotmail.com</e-mail>
-  </Alati>
+  </oglas>
 
   <!--cetvrti oglas-->
-  <Poducavanje>
+  <oglas kategorija="Poducavanje">
     <datumIsteka>
       <dan>22</dan>
       <mesec>11</mesec>
@@ -69,10 +69,10 @@
       <tag3>skype</tag3>
     </tag>
     <e-mail tip="sluzbeni">jelena@hotmail.com</e-mail>
-  </Poducavanje>
+  </oglas>
 
   <!--peti oglas-->
-  <Automobil>
+  <oglas kategorija="Automobil">
     <datumIsteka>
       <dan>20</dan>
       <mesec>11</mesec>
@@ -87,5 +87,5 @@
       <tag4>dizel</tag4>
     </tag>
     <e-mail tip="privatni">dragan@gmail.com</e-mail>
-  </Automobil>
+  </oglas>
 </Oglasi>
