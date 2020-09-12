@@ -114,11 +114,11 @@ http.createServer(function (req, res){
                 </head>
                 <body>
                     <h3>Postavi tekst oglasa</h3>
-                    <a href="/sve-osobe">Svi oglasi</a>
+                    <a href="/svi-oglasi">Svi oglasi</a>
                     <br><br>
                     <form action='/postavi-tekstOglasa' method='POST'>
-                        ID: <input type='number' name='id' value='${osoba.id}' readonly><br><br>
-                        TEKST OGLASA: <input type='text' name='tekstOglasa' value='${osoba.tekstOglasa}'><br><br>
+                        ID: <input type='number' name='id' value='${oglas.id}' readonly><br><br>
+                        TEKST OGLASA: <input type='text' name='tekstOglasa' value='${oglas.tekstOglasa}'><br><br>
                         <button type='submit'>POSTAVI TEKST OGLASA</button>
                     </form>
                 </body>
