@@ -8,7 +8,7 @@ let oglasi = [
         'id': 1,
         'kategorija' : "Automobili",
         'datumIsteka': "2-7-2021",
-        'cena': "2000",
+        'cena': "2000 eur",
         'tekstOglasa': "Alfa Romeo 147, 1.6ts 105KS. Odrzavan redovno, veliki servis uradjen pre 2000km.",
         'tag' : "Alfa Romeo",
         'email' : "ristic.017@gmail.com"
@@ -17,7 +17,7 @@ let oglasi = [
         'id': 2,
         'kategorija' : "Alati",
         'datumIsteka': "6-12-2021",
-        'cena': "22000",
+        'cena': "22000 din",
         'tekstOglasa': "Bosch udarna busilica 1500 watt, koriscena iskljucivo za kucnu upotrebu.",
         'tag' : "bosch",
         'email' : "mirko@hotmail.com"
@@ -26,10 +26,28 @@ let oglasi = [
         'id': 3,
         'kategorija' : "Alati",
         'datumIsteka': "12-8-2022",
-        'cena': "28000",
+        'cena': "28000 din",
         'tekstOglasa': "Bosch brusilica 12000 o/min, profesionalna i izuzetno snazna.",
         'tag' : "bosch",
         'email' : "vlada@hotmail.com"
+    },
+    {
+        'id': 4,
+        'kategorija' : "Poducavanje",
+        'datumIsteka': "22-11-2022",
+        'cena': "1500 din",
+        'tekstOglasa': "Diplomirani filolog poducava engleski jezik kandidate do kategorije B2. Online ili uzivo u Vranju.",
+        'tag' : "engleski",
+        'email' : "jelena@hotmail.com"
+    },
+    {
+        'id': 5,
+        'kategorija' : "Automobili",
+        'datumIsteka': "20-11-2021",
+        'cena': "1500 eur",
+        'tekstOglasa': "BMW 320, 2005. godiste, plave boje, vise informacija na broj telefona.",
+        'tag' : "BMW",
+        'email' : "dragan@gmail.com"
     }
 ];
 
@@ -147,13 +165,18 @@ http.createServer(function (req, res){
                     <br><br>
                     <form action='/dodaj-oglas' method='POST'>
                         ID: <input type='number' name='id'><br><br>
-                        KATEGORIJA: <input type='text' name='kategorija'><br><br>
-                        DATUM ISTEKA: <input type='text' name='datumIsteka'><br><br>
-                        CENA: <input type='text' name='cena'><br><br>
-                        TEKST OGLASA: <input type='text' name='tekstOglasa'><br><br>
-                        TAG: <input type='text' name='tag'><br><br>
-                        E MAIL: <input type='text' name='email'><br><br>
-                        <button type='submit'>DODAJ OGLAS</button>
+                        Kategorija: <select name="kategorija" id="kategorija">
+                                        <option value="Automobili">Automobili</option>
+                                        <option value="Stanovi">Stanovi</option>
+                                        <option value="Alati">Alati</option>
+                                        <option value="Poducavanje">Poducavanje</option>
+                                    </select><br><br>
+                        Datum isteka: <input type='text' name='datumIsteka'><br><br>
+                        Cena: <input type='text' name='cena'><br><br>
+                        Tekst oglasa: <input type='text' name='tekstOglasa'><br><br>
+                        Tag: <input type='text' name='tag'><br><br>
+                        E-mail: <input type='email' name='email'><br><br>
+                        <button type='submit'>DODAJ OGLAS</button>  <input type="reset">
                     </form>
                 </body>
                 </html>
@@ -193,7 +216,7 @@ http.createServer(function (req, res){
                 body += data;
             });
             req.on('end', function () {
-                dodajOglas(querystring.parse(body).id,querystring.parse(body).datumIsteka,querystring.parse(body).cena,querystring.parse(body).tekstOglasa,querystring.parse(body).tag,querystring.parse(body).email);
+                dodajOglas(querystring.parse(body).id,querystring.parse(body).kategorija,querystring.parse(body).datumIsteka,querystring.parse(body).cena,querystring.parse(body).tekstOglasa,querystring.parse(body).tag,querystring.parse(body).email);
                 res.writeHead(302, {
                     'Location': '/svi-oglasi'
                 });
@@ -201,7 +224,8 @@ http.createServer(function (req, res){
             });
         }
     }
-}).listen(4000);
+}).listen(2211);
+console.log("Port: 2211");
 
 function sviOglasi(){
     return oglasi;
@@ -223,7 +247,7 @@ function obrisiOglas(id){
     oglasi = pomocni
     return oglasi
 }
-function dodajOglas(id,datumIsteka,cena,tekstOglasa,tag,email){
+function dodajOglas(id,kategorija,datumIsteka,cena,tekstOglasa,tag,email){
     let oglas = {
         'id': id,
         'kategorija': kategorija,
