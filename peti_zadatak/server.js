@@ -6,6 +6,7 @@ const PATH = "www/";
 let oglasi = [
     {
         'id': 1,
+        'kategorija' : "Automobili",
         'datumIsteka': "2-7-2021",
         'cena': "2000",
         'tekstOglasa': "Alfa Romeo 147, 1.6ts 105KS. Odrzavan redovno, veliki servis uradjen pre 2000km.",
@@ -14,6 +15,7 @@ let oglasi = [
     },
     {
         'id': 2,
+        'kategorija' : "Alati",
         'datumIsteka': "6-12-2021",
         'cena': "22000",
         'tekstOglasa': "Bosch udarna busilica 1500 watt, koriscena iskljucivo za kucnu upotrebu.",
@@ -22,6 +24,7 @@ let oglasi = [
     },
     {
         'id': 3,
+        'kategorija' : "Alati",
         'datumIsteka': "12-8-2022",
         'cena': "28000",
         'tekstOglasa': "Bosch brusilica 12000 o/min, profesionalna i izuzetno snazna.",
@@ -61,12 +64,13 @@ http.createServer(function (req, res){
                             <thead>
                                 <tr>
                                     <th>Id</th>
+                                    <th>Kategorija</th>
                                     <th>Datum isteka</th>
-                                    <th>cena</th>
+                                    <th>Cena</th>
                                     <th>Tekst oglasa</th>
                                     <th>Dodaj tekst oglasa</th>
-                                    <th>tag</th>
-                                    <th>email</th>
+                                    <th>Tag</th>
+                                    <th>E-mail</th>
                                     <th>Brisanje</th>
                                 </tr>
                             </thead>               
@@ -76,6 +80,7 @@ http.createServer(function (req, res){
                 res.write(`
                     <tr>
                         <td>${o.id}</td>
+                        <td>${o.kategorija}</td>
                         <td>${o.datumIsteka}</td>
                         <td>${o.cena}</td>
                         <td>${o.tekstOglasa}</td>
@@ -142,6 +147,7 @@ http.createServer(function (req, res){
                     <br><br>
                     <form action='/dodaj-oglas' method='POST'>
                         ID: <input type='number' name='id'><br><br>
+                        KATEGORIJA: <input type='text' name='kategorija'><br><br>
                         DATUM ISTEKA: <input type='text' name='datumIsteka'><br><br>
                         CENA: <input type='text' name='cena'><br><br>
                         TEKST OGLASA: <input type='text' name='tekstOglasa'><br><br>
@@ -220,6 +226,7 @@ function obrisiOglas(id){
 function dodajOglas(id,datumIsteka,cena,tekstOglasa,tag,email){
     let oglas = {
         'id': id,
+        'kategorija': kategorija,
         'datumIsteka': datumIsteka,
         'cena': cena,
         'tekstOglasa': tekstOglasa,
