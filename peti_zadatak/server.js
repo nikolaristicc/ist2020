@@ -1,0 +1,228 @@
+const fs = require('fs');
+const http = require('http');
+const url = require('url');
+const querystring = require('query-string');
+const PATH = "www/";
+let oglasi = [
+    {
+        'id': 1,
+        'datumIsteka': "2-7-2021",
+        'cena': "2000",
+        'tekstOglasa': "Alfa Romeo 147, 1.6ts 105KS. Odrzavan redovno, veliki servis uradjen pre 2000km.",
+        'tag' : "Alfa Romeo",
+        'e-mail' : "ristic.017@gmail.com"
+    },
+    {
+        'id': 2,
+        'datumIsteka': "6-12-2021",
+        'cena': "22000",
+        'tekstOglasa': "Bosch udarna busilica 1500 watt, koriscena iskljucivo za kucnu upotrebu.",
+        'tag' : "bosch",
+        'e-mail' : "mirko@hotmail.com"
+    },
+    {
+        'id': 3,
+        'datumIsteka': "12-8-2022",
+        'cena': "28000",
+        'tekstOglasa': "Bosch brusilica 12000 o/min, profesionalna i izuzetno snazna.",
+        'tag' : "bosch",
+        'e-mail' : "vlada@hotmail.com"
+    }
+];
+
+http.createServer(function (req, res){    
+    let urlObj = url.parse(req.url,true,false);
+    if (req.method == "GET"){
+        if (urlObj.pathname == "/svi-oglasi"){ 
+            response = sviOglasi();
+            res.write(`
+                <!DOCTYPE html>
+                <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Svi oglasi</title>
+                    <style>
+                        table, th, td {
+                            border: 1px solid black;
+                        }
+                        th,td {
+                            padding: 5px 12px;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <h3>Svi oglasi</h3>
+                    <a href="/dodaj-oglas">Dodaj oglas</a>
+                    <br>
+                    <br>
+                    <div id="prikaz">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>datumIsteka</th>
+                                    <th>cena</th>
+                                    <th>tekstOglasa</th>
+                                    <th>tag</th>
+                                    <th>email</th>
+                                    <th>Brisanje</th>
+                                </tr>
+                            </thead>               
+                            <tbody>
+            `);
+            for(let o of response){
+                res.write(`
+                    <tr>
+                        <td>${o.id}</td>
+                        <td>${o.datumIsteka}</td>
+                        <td>${o.cena}</td>
+                        <td>${o.tekstOglasa}</td>
+                        <td><a href='/postavi-tekstOglasa?id=${o.id}'>Postavi tekst oglasa</a></td>
+                        <td>${o.email}</td>
+                        <td>
+                            <form action='/obrisi-oglas' method='POST'>
+                                <input type='hidden' name='id' value='${o.id}'>
+                                <button type='submit'>Brisanje oglasa</button>
+                            </form>
+                        </td>
+                    </tr>
+                `);
+            }
+            res.end(`
+                            </tbody>
+                        </table>
+                    </body>
+                </html>
+            `);
+        }
+        if (urlObj.pathname == "/proba"){ 
+            res.writeHead(302, {
+                'Location': '/svi-oglasi'
+            });
+            res.end();
+        }
+        if (urlObj.pathname == "/postavi-tekstOglasa"){
+            let oglas = oglasi.find(x => x.id == urlObj.query.id);
+            res.write(`
+                <!DOCTYPE html>
+                <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Postavi tekst oglasa</title>
+                </head>
+                <body>
+                    <h3>Postavi tekst oglasa</h3>
+                    <a href="/sve-osobe">Svi oglasi</a>
+                    <br><br>
+                    <form action='/postavi-tekstOglasa' method='POST'>
+                        ID: <input type='number' name='id' value='${osoba.id}' readonly><br><br>
+                        TEKST OGLASA: <input type='text' name='tekstOglasa' value='${osoba.tekstOglasa}'><br><br>
+                        <button type='submit'>POSTAVI TEKST OGLASA</button>
+                    </form>
+                </body>
+                </html>
+            `);
+        }
+        if (urlObj.pathname == "/dodaj-oglas"){
+            res.write(`
+                <!DOCTYPE html>
+                <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Dodaj oglas</title>
+                </head>
+                <body>
+                    <h3>Dodaj oglas</h3>
+                    <a href="/svi-oglasi">Svi oglasi</a>
+                    <br><br>
+                    <form action='/dodaj-oglas' method='POST'>
+                        ID: <input type='number' name='id'><br><br>
+                        DATUM ISTEKA: <input type='text' name='datumIsteka'><br><br>
+                        CENA: <input type='text' name='cena'><br><br>
+                        TEKST OGLASA: <input type='text' name='tekstOglasa'><br><br>
+                        TAG: <input type='text' name='tag'><br><br>
+                        E MAIL: <input type='text' name='email'><br><br>
+                        <button type='submit'>DODAJ OGLAS</button>
+                    </form>
+                </body>
+                </html>
+            `);
+        }
+    }
+    else if(req.method == "POST") {
+        if (urlObj.pathname == "/postavi-tekstOglasa"){
+            var body = '';
+                req.on('data', function (data) {
+                body += data;
+            });
+            req.on('end', function () {
+                postaviTekstOglasa(querystring.parse(body).id,querystring.parse(body).tekstOglasa)
+                res.writeHead(302, {
+                    'Location': '/svi-oglasi'
+                });
+                res.end();
+            });
+        }
+        if (urlObj.pathname == "/obrisi-ogas"){
+            var body = '';
+                req.on('data', function (data) {
+                body += data;
+            });
+            req.on('end', function () {
+                obrisiOglas(querystring.parse(body).id)
+                res.writeHead(302, {
+                    'Location': '/svi-oglasi'
+                });
+                res.end();
+            });
+        }
+        if (urlObj.pathname == "/dodaj-oglas"){
+            var body = '';
+                req.on('data', function (data) {
+                body += data;
+            });
+            req.on('end', function () {
+                dodajOglas(querystring.parse(body).id,querystring.parse(body).datumIsteka,querystring.parse(body).cena,querystring.parse(body).tekstOglasa,querystring.parse(body).tag,querystring.parse(body).email);
+                res.writeHead(302, {
+                    'Location': '/svi-oglasi'
+                });
+                res.end();
+            });
+        }
+    }
+}).listen(4000);
+
+function sviOglasi(){
+    return oglasi;
+}
+function postaviTekstOglasa(id,tekstOglasa){
+    for(let i=0;i<oglasi.length;i++){
+        if(oglasi[i].id == id){
+            oglasi[i].tekstOglasa = tekstOglasa
+        }
+    }
+}
+function obrisiOglas(id){
+    let pomocni = []
+    for(let i=0;i<oglasi.length;i++){
+        if(oglasi[i].id != id){
+            pomocni.push(oglasi[i])
+        }
+    }
+    oglasi = pomocni
+    return oglasi
+}
+function dodajOglas(id,datumIsteka,cena,tekstOglasa,tag,email){
+    let oglas = {
+        'id': id,
+        'datumIsteka': datumIsteka,
+        'cena': cena,
+        'tekstOglasa': tekstOglasa,
+        'tag' : tag,
+        'e-mail' : email
+    };
+    oglasi.push(oglas);
+}

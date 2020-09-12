@@ -3,7 +3,7 @@
 <Oglasi>
 
   <!--prvi oglas-->
-  <oglas kategorija="Automobil" id="a1">
+  <oglas kategorija="Automobil">
     <datumIsteka>
       <dan>2</dan>
       <mesec>7</mesec>
@@ -16,11 +16,11 @@
       <tag2>kupe</tag2>
       <tag3>Vranje</tag3>
     </tag>
-    <e-mail tip="privatni">ristic.017@gmail.com</e-mail>
+    <email tip="privatni">ristic.017@gmail.com</email>
   </oglas>
 
   <!--drugi oglas-->
-  <oglas kategorija="Alati" id="a2">
+  <oglas kategorija="Alati">
     <datumIsteka>
       <dan>6</dan>
       <mesec>12</mesec>
@@ -34,11 +34,11 @@
       <tag3>Beograd</tag3>
       <tag4>amerikan</tag4>
     </tag>
-    <e-mail tip="sluzbeni">mirko@hotmail.com</e-mail>
+    <email tip="sluzbeni">mirko@hotmail.com</email>
   </oglas>
 
   <!--treci oglas-->
-  <oglas kategorija="Alati" id="a3">
+  <oglas kategorija="Alati">
     <datumIsteka>
       <dan>12</dan>
       <mesec>8</mesec>
@@ -51,11 +51,11 @@
       <tag2>brusilica</tag2>
       <tag3>Zajecar</tag3>
     </tag>
-    <e-mail tip="sluzbeni">vlada@hotmail.com</e-mail>
+    <email tip="sluzbeni">vlada@hotmail.com</email>
   </oglas>
 
   <!--cetvrti oglas-->
-  <oglas kategorija="Poducavanje" id="a4">
+  <oglas kategorija="Poducavanje">
     <datumIsteka>
       <dan>22</dan>
       <mesec>11</mesec>
@@ -68,11 +68,11 @@
       <tag2>jezik</tag2>
       <tag3>skype</tag3>
     </tag>
-    <e-mail tip="sluzbeni">jelena@hotmail.com</e-mail>
+    <email tip="sluzbeni">jelena@hotmail.com</email>
   </oglas>
 
   <!--peti oglas-->
-  <oglas kategorija="Automobil" id="a5">
+  <oglas kategorija="Automobil">
     <datumIsteka>
       <dan>20</dan>
       <mesec>11</mesec>
@@ -86,6 +86,6 @@
       <tag3>Prokuplje</tag3>
       <tag4>dizel</tag4>
     </tag>
-    <e-mail tip="privatni">dragan@gmail.com</e-mail>
+    <email tip="privatni">dragan@gmail.com</email>
   </oglas>
 </Oglasi>
